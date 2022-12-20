@@ -11,4 +11,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\KawaiTakahiro\Desktop\StableDiffusionDiscordBot\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\KawaiTakahiro\Desktop\StableDiffusionDiscordBot\.editorconfig" />
+  </ItemGroup>
+
 </Project>
