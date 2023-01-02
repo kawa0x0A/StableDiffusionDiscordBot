@@ -19,4 +19,10 @@
     <None Include="C:\Users\KawaiTakahiro\Desktop\StableDiffusionDiscordBot\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\bootstrap\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\svg\" />
+  </ItemGroup>
+
 </Project>

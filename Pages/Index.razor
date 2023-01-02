@@ -1,3 +1,132 @@
 ﻿@page "/"
 
+@using Microsoft.AspNetCore.Components.Forms;
+
+@inject NavigationManager navigationManager
+
 <h1>Hello, world!</h1>
+
+<div class="container">
+    <EditForm Model="@ModelData">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <img src="svg/translate.svg" />
+                <label class="col-form-label">Botに話しかけるときの言語</label>
+            </div>
+            <InputRadioGroup Name="Language" @bind-Value=@ModelData.SelectedLanguage class="form-check-inline">
+                <div class="col-3">
+                    <InputRadio Name="Language" Value="@Language.English" class="form-check-input" id="english-button" />
+                    <label class="form-check-label" for="english-button">English</label>
+                </div>
+                <div class="col-3">
+                    <InputRadio Name="Language" Value="@Language.Japanese" class="form-check-input" id="japanese-button" />
+                    <label class="form-check-label" for="japanese-button">日本語</label>
+                </div>
+            </InputRadioGroup>
+        </div>
+        <div class="border" />
+        <div class="row align-items-center">
+            <div class="col-6">
+                <img src="svg/image.svg" />
+                <label class="col-form-label">使用するAIモデル</label>
+            </div>
+            <InputRadioGroup Name="ModelType" @bind-Value=ModelData.SelectedModelType class="form-check-inline">
+                <div class="col-3">
+                    <InputRadio Name="ModelType" Value="@ModelType.Stable" class="form-check-input" id="stable-button" />
+                    <label class="form-check-label" for="stable-button">Stable</label>
+                </div>
+                <div class="col-3">
+                    <InputRadio Name="ModelType" Value="@ModelType.Waifu" class="form-check-input" id="waifu-button" />
+                    <label class="form-check-label" for="waifu-button">Waifu</label>
+                </div>
+            </InputRadioGroup>
+        </div>
+        <div class="border" />
+        <div class="row justify-content-evenly">
+            <button type="submit" class="col-2 gy-3 btn btn-light" @onclick="OnClickFreePlanButton">Free</button>
+            <button type="submit" class="col-2 gy-3 btn btn-primary" @onclick="OnClickSubscribePlanButton">Subscribe</button>
+        </div>
+    </EditForm>
+</div>
+
+@code{
+    private enum Language
+    {
+        English,
+        Japanese,
+    }
+
+    private enum ModelType
+    {
+        Stable,
+        Waifu,
+    }
+
+    private class Model
+    {
+        public Language SelectedLanguage { get; set; }
+        public ModelType SelectedModelType { get; set; }
+    }
+
+    private Model ModelData { get; set; } = new Model();
+
+    protected override void OnInitialized()
+    {
+        if (System.Globalization.CultureInfo.CurrentUICulture.EnglishName == "ja")
+        {
+            ModelData.SelectedLanguage = Language.Japanese;
+        }
+        else
+        {
+            ModelData.SelectedLanguage = Language.English;
+        }
+
+        ModelData.SelectedModelType = ModelType.Stable;
+
+        base.OnInitialized();
+    }
+
+    private void OnClickFreePlanButton()
+    {
+        var url = "";
+
+        switch (ModelData.SelectedLanguage)
+        {
+            case Language.Japanese:
+                switch (ModelData.SelectedModelType)
+                {
+                    case ModelType.Stable:
+                        url = "https://discord.com/api/oauth2/authorize?client_id=1054281527590142014&permissions=43008&scope=bot";
+                        break;
+
+                    case ModelType.Waifu:
+                        url = "https://discord.com/api/oauth2/authorize?client_id=1054663362421727272&permissions=43008&scope=bot";
+                        break;
+                }
+                break;
+
+            case Language.English:
+                switch (ModelData.SelectedModelType)
+                {
+                    case ModelType.Stable:
+                        url = "https://discord.com/api/oauth2/authorize?client_id=1054662338973802566&permissions=43008&scope=bot";
+                        break;
+
+                    case ModelType.Waifu:
+                        url = "https://discord.com/api/oauth2/authorize?client_id=1054663743113543710&permissions=43008&scope=bot";
+                        break;
+                }
+                break;
+        }
+
+        if (!string.IsNullOrEmpty(url))
+        {
+            navigationManager.NavigateTo(url, true);
+        }
+    }
+
+    private void OnClickSubscribePlanButton()
+    {
+        navigationManager.NavigateTo("", true);
+    }
+}
