@@ -1,8 +1,10 @@
 ﻿@page "/"
 
 @using Microsoft.AspNetCore.Components.Forms;
+@using Microsoft.AspNetCore.Components.Authorization
 
 @inject NavigationManager navigationManager
+@inject DiscordAuthticateStateProvider discordAuthticateStateProvider
 
 <h1>Hello, world!</h1>
 
@@ -41,15 +43,49 @@
                 </div>
             </InputRadioGroup>
         </div>
-        <div class="border" />
-        <div class="row justify-content-evenly">
-            <button type="submit" class="col-2 gy-3 btn btn-light" @onclick="OnClickFreePlanButton">Free</button>
-            <button type="submit" class="col-2 gy-3 btn btn-primary" @onclick="OnClickSubscribePlanButton">Subscribe</button>
-        </div>
     </EditForm>
 </div>
+<div class="border" />
+<AuthorizeView>
+    <Authorized>
+        <div class="row justify-content-center">
+            <button class="col-6 mt-4 btn btn-warning" @onclick="OnClickLogoutButton">Logout</button>
+        </div>
+        @switch (CurrentSubscriptionState)
+        {
+            case SubscriptionState.Disable:
+                <div class="row justify-content-center">
+                    <button type="submit" class="col-6 mt-4 mb-4 btn btn-danger" @onclick="OnClickSubscribeButton">サブスクリプション登録</button>
+                </div>
+                break;
+
+            case SubscriptionState.Duplication:
+                <div class="row justify-content-center">
+                    <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
+                </div>
+                break;
+
+            case SubscriptionState.Enable:
+                <div class="row justify-content-center">
+                    <button type="submit" class="col-6 mt-2 mb-4 btn btn-success" @onclick="OnClickAddBotButton">Botを追加</button>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
+                </div>
+                break;
+        }
+    </Authorized>
+    <NotAuthorized>
+        <div class="row justify-content-center">
+            <button class="col-6 mt-4 btn btn-primary" @onclick="OnClickLoginButton">Login</button>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
 
 @code{
+    [CascadingParameter]
+    private Task<AuthenticationState>? AuthenticationState { get; set; }
+
     private enum Language
     {
         English,
@@ -62,6 +98,14 @@
         Waifu,
     }
 
+    private enum SubscriptionState
+    {
+        None,
+        Disable,
+        Duplication,
+        Enable,
+    }
+
     private class Model
     {
         public Language SelectedLanguage { get; set; }
@@ -69,6 +113,8 @@
     }
 
     private Model ModelData { get; set; } = new Model();
+
+    private SubscriptionState CurrentSubscriptionState { get; set; } = SubscriptionState.None;
 
     protected override void OnInitialized()
     {
@@ -86,47 +132,108 @@
         base.OnInitialized();
     }
 
-    private void OnClickFreePlanButton()
+    protected override async Task OnInitializedAsync()
     {
-        var url = "";
+        var authenticationState = await AuthenticationState!;
 
+        if ((authenticationState.User.Identity != null) && (authenticationState.User.Identity.IsAuthenticated))
+        {
+            var subscriptionService = new Stripe.SubscriptionService();
+
+            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{discordAuthticateStateProvider.GetLoginUserId()}' AND status:'active'" });
+
+            if (subscriptions.Data.Count == 0)
+            {
+                CurrentSubscriptionState = SubscriptionState.Disable;
+            }
+            else if (subscriptions.Data.Count > 1)
+            {
+                CurrentSubscriptionState = SubscriptionState.Duplication;
+            }
+            else
+            {
+                CurrentSubscriptionState = SubscriptionState.Enable;
+            }
+        }
+        else
+        {
+            CurrentSubscriptionState = SubscriptionState.Disable;
+        }
+
+        await base.OnInitializedAsync();
+    }
+
+    private string GetDiscordBotUrl()
+    {
         switch (ModelData.SelectedLanguage)
         {
             case Language.Japanese:
                 switch (ModelData.SelectedModelType)
                 {
-                    case ModelType.Stable:
-                        url = "https://discord.com/api/oauth2/authorize?client_id=1054281527590142014&permissions=43008&scope=bot";
-                        break;
+                    case ModelType.Stable:  return "https://discord.com/api/oauth2/authorize?client_id=1054281527590142014&permissions=43008&scope=bot";
 
-                    case ModelType.Waifu:
-                        url = "https://discord.com/api/oauth2/authorize?client_id=1054663362421727272&permissions=43008&scope=bot";
-                        break;
+                    case ModelType.Waifu:   return "https://discord.com/api/oauth2/authorize?client_id=1054663362421727272&permissions=43008&scope=bot";
                 }
                 break;
 
             case Language.English:
                 switch (ModelData.SelectedModelType)
                 {
-                    case ModelType.Stable:
-                        url = "https://discord.com/api/oauth2/authorize?client_id=1054662338973802566&permissions=43008&scope=bot";
-                        break;
+                    case ModelType.Stable:  return "https://discord.com/api/oauth2/authorize?client_id=1054662338973802566&permissions=43008&scope=bot";
 
-                    case ModelType.Waifu:
-                        url = "https://discord.com/api/oauth2/authorize?client_id=1054663743113543710&permissions=43008&scope=bot";
-                        break;
+                    case ModelType.Waifu:   return "https://discord.com/api/oauth2/authorize?client_id=1054663743113543710&permissions=43008&scope=bot";
                 }
                 break;
         }
 
-        if (!string.IsNullOrEmpty(url))
-        {
-            navigationManager.NavigateTo(url, true);
-        }
+        return string.Empty;
     }
 
-    private void OnClickSubscribePlanButton()
+    private void OnClickAddBotButton()
     {
-        navigationManager.NavigateTo("", true);
+        navigationManager.NavigateTo(GetDiscordBotUrl());
+    }
+
+    private async void OnClickSubscribeButton()
+    {
+        var service = new Stripe.Checkout.SessionService();
+
+        var session = await service.CreateAsync(new Stripe.Checkout.SessionCreateOptions()
+        {
+            LineItems = new List<Stripe.Checkout.SessionLineItemOptions>()
+            {
+                new Stripe.Checkout.SessionLineItemOptions()
+                {
+                    Price = "price_1MGynCBvThSVxnxAJDeFqNng",
+                },
+            },
+            Mode = "subscription",
+            CustomerEmail = discordAuthticateStateProvider.GetLoginUserEmail(),
+            SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>(){ { "DiscordId", discordAuthticateStateProvider.GetLoginUserId() } } },
+            SuccessUrl = navigationManager.BaseUri,
+            CancelUrl = navigationManager.BaseUri,
+            AutomaticTax = new Stripe.Checkout.SessionAutomaticTaxOptions() { Enabled = true },
+        });
+
+        navigationManager.NavigateTo(session.Url);
+    }
+
+    private void OnClickLoginButton()
+    {
+        #if DEBUG
+            navigationManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=1060468061611753492&redirect_uri=https%3A%2F%2Flocalhost%3A7012%2Flogin&response_type=code&scope=identify%20email");
+        #else
+            navigationManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=1060468061611753492&redirect_uri=https%3A%2F%2Fkawa0x0a.github.io%2FStableDiffusionDiscordBot%2Flogin&response_type=code&scope=identify%20email");
+        #endif
+    }
+
+    private void OnClickLogoutButton()
+    {
+        navigationManager.NavigateTo("logout");
+    }
+
+    private void OnClickCustomerPortalButton()
+    {
+        navigationManager.NavigateTo("https://billing.stripe.com/p/login/8wM6oCenuaTm5nq9AA");
     }
 }
