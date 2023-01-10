@@ -22,19 +22,13 @@ jobs:
       - name: Install .NET WebAssembly Tools
         run: dotnet workload install wasm-tools
 
-      # App Settings Variable Substitution
-      - name: App Settings Variable Substitution
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: 'wwwroot/appsettings.json'
+      # Publish the site
+      - name: Publish
+        run: dotnet publish StableDiffusionDiscordBot.csproj -p:GHPages=true -c:Release -o:publish
         env:
           StripeApiKey: ${{ secrets.STRIPEAPIKEY }}
           DiscordClientId: ${{ secrets.DISCORDCLIENTID }}
           DiscordClientSecret: ${{ secrets.DISCORDCLIENTSECRET }}
-
-      # Publish the site
-      - name: Publish
-        run: dotnet publish StableDiffusionDiscordBot.csproj -p:GHPages=true -c:Release -o:publish
 
       # Deploy the site
       - name: Deploy
