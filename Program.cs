@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.Extensions.Configuration.EnvironmentVariables;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using StableDiffusionDiscordBot;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -20,7 +20,7 @@ builder.Services.AddApiAuthorization();
 
 builder.Services.AddOptions();
 
-builder.Configuration.AddEnvironmentVariables().Build();
+builder.Configuration.AddUserSecrets<Program>(true).Build();
 
 Stripe.StripeConfiguration.ApiKey = builder.Configuration["StripeApiKey"];
 
