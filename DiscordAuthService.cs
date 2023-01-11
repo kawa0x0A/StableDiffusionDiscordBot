@@ -81,7 +81,7 @@ namespace StableDiffusionDiscordBot
                 return NoLoginAuthenticationState;
             }
 
-            var tokenResponseMessage = await httpClient.PostAsync("https://discordapp.com/api/oauth2/token", new FormUrlEncodedContent(new Dictionary<string, string>() { { "client_id", configuration["DiscordClientId"]! }, { "client_secret", configuration["DiscordClientSecret"]! }, { "grant_type", "authorization_code" }, { "code", code! }, { "redirect_uri", navigationManager.BaseUri + "login" } }));
+            var tokenResponseMessage = await httpClient.PostAsync("https://discordapp.com/api/oauth2/token", new FormUrlEncodedContent(new Dictionary<string, string>() { { "client_id", configuration["DiscordClientId"]! }, { "client_secret", configuration["DiscordClientSecret"]! }, { "grant_type", "authorization_code" }, { "code", code! }, { "redirect_uri", navigationManager.ToAbsoluteUri("login").AbsoluteUri } }));
 
             var token = await tokenResponseMessage.Content.ReadFromJsonAsync<DiscordToken>();
 
