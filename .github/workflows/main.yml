@@ -24,7 +24,11 @@ jobs:
 
       # Publish the site
       - name: Publish
-        run: dotnet publish StableDiffusionDiscordBot.csproj -p:GHPages=true -p:StripeApiKey=${{ secrets.STRIPEAPIKEY }} -p:DiscordClientId=${{ secrets.DISCORDCLIENTID }} -p:DiscordClientSecret=${{ secrets.DISCORDCLIENTSECRET }} -c:Release -o:publish
+        run: dotnet publish StableDiffusionDiscordBot.csproj -p:GHPages=true -c:Release -o:publish
+        env:
+          StripeApiKey: ${{ secrets.STRIPEAPIKEY }}
+          DiscordClientId: ${{ secrets.DISCORDCLIENTID }}
+          DiscordClientSecret: ${{ secrets.DISCORDCLIENTSECRET 
 
       # Deploy the site
       - name: Deploy
