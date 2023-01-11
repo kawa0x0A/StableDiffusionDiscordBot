@@ -28,7 +28,7 @@ jobs:
         env:
           StripeApiKey: ${{ secrets.STRIPEAPIKEY }}
           DiscordClientId: ${{ secrets.DISCORDCLIENTID }}
-          DiscordClientSecret: ${{ secrets.DISCORDCLIENTSECRET 
+          DiscordClientSecret: ${{ secrets.DISCORDCLIENTSECRET }}
 
       # Deploy the site
       - name: Deploy
