@@ -16,15 +16,15 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = DiscordAuthenticationDefaults.AuthenticationScheme;
 }).AddCookie().AddDiscord(options =>
 {
-    options.ClientId = "1060468061611753492";
-    options.ClientSecret = "RvzRzOlmHl-5ef58fslyGkBDKyxbzsgN";
+    options.ClientId = builder.Configuration["DiscordClientId"]!;
+    options.ClientSecret = builder.Configuration["DiscordSecret"]!;
 
     options.SaveTokens = true;
 });
 
 builder.Services.AddHttpContextAccessor();
 
-Stripe.StripeConfiguration.ApiKey = "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";
+Stripe.StripeConfiguration.ApiKey = builder.Configuration["StripeApiKey"]!;
 
 var app = builder.Build();
 
