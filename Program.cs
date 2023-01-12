@@ -51,4 +51,8 @@ app.UseAuthorization();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
+var cultures = new[] { "ja-JP", "en-US" };
+
+app.UseRequestLocalization(new RequestLocalizationOptions().AddSupportedCultures(cultures).AddSupportedUICultures(cultures));
+
 app.Run();
