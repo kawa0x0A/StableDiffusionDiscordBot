@@ -78,8 +78,11 @@
             }
         </Authorized>
         <NotAuthorized>
-            <div class="row justify-content-center">
-                <button class="col-6 mt-4 btn btn-primary" @onclick="OnClickLoginButton">Login</button>
+            <div class="row justify-content-center h-25">
+                <button class="col-6 mt-4 btn btn-primary" @onclick="OnClickLoginButton">
+                    <img src="svg/discord-mark-white.svg" class="img-fluid w-25 h-50" />
+                    <span class="fs-2 align-middle">Login</span>
+                </button>
             </div>
         </NotAuthorized>
     </AuthorizeView>
