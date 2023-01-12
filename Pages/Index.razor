@@ -33,11 +33,15 @@
                 <label class="col-form-label">使用するAIモデル</label>
             </div>
             <InputRadioGroup Name="ModelType" @bind-Value=ModelData.SelectedModelType class="form-check-inline">
-                <div class="col-3">
+                <div class="col-2">
                     <InputRadio Name="ModelType" Value="@ModelType.Stable" class="form-check-input" id="stable-button" />
                     <label class="form-check-label" for="stable-button">Stable</label>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
+                    <InputRadio Name="ModelType" Value="@ModelType.Stable2" class="form-check-input" id="stable2-button" />
+                    <label class="form-check-label" for="stable2-button">Stable 2</label>
+                </div>
+                <div class="col-2">
                     <InputRadio Name="ModelType" Value="@ModelType.Waifu" class="form-check-input" id="waifu-button" />
                     <label class="form-check-label" for="waifu-button">Waifu</label>
                 </div>
@@ -95,6 +99,7 @@
     private enum ModelType
     {
         Stable,
+        Stable2,
         Waifu,
     }
 
@@ -172,6 +177,8 @@
                 {
                     case ModelType.Stable:  return "https://discord.com/api/oauth2/authorize?client_id=1054281527590142014&permissions=43008&scope=bot";
 
+                    case ModelType.Stable2: return "https://discord.com/api/oauth2/authorize?client_id=1063030699130626158&permissions=43008&scope=bot";
+
                     case ModelType.Waifu:   return "https://discord.com/api/oauth2/authorize?client_id=1054663362421727272&permissions=43008&scope=bot";
                 }
                 break;
@@ -180,6 +187,8 @@
                 switch (ModelData.SelectedModelType)
                 {
                     case ModelType.Stable:  return "https://discord.com/api/oauth2/authorize?client_id=1054662338973802566&permissions=43008&scope=bot";
+
+                    case ModelType.Stable2: return "https://discord.com/api/oauth2/authorize?client_id=1063030808631312434&permissions=43008&scope=bot";
 
                     case ModelType.Waifu:   return "https://discord.com/api/oauth2/authorize?client_id=1054663743113543710&permissions=43008&scope=bot";
                 }
