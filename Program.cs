@@ -1,6 +1,8 @@
 using AspNet.Security.OAuth.Discord;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
 using StableDiffusionDiscordBot;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 builder.Services.AddRouting(options => { options.LowercaseUrls = true; });
+
+var azureServiceTokenProvider = new AzureServiceTokenProvider();
+
+var keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+
+builder.Configuration.AddAzureKeyVault("https://keycontainer-kawai321.vault.azure.net/", keyVaultClient, new DefaultKeyVaultSecretManager());
 
 builder.Services.AddAuthentication(options =>
 {
