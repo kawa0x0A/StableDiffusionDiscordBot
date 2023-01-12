@@ -26,6 +26,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddLocalization();
+
 Stripe.StripeConfiguration.ApiKey = builder.Configuration["StripeApiKey"]!;
 
 var app = builder.Build();
