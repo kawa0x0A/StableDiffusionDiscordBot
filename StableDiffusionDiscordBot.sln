@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StableDiffusionDiscordBot", "StableDiffusionDiscordBot.csproj", "{F8CFE13E-2F3D-4658-AA6A-C90E3B46F1CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StableDiffusionDiscordBot", "StableDiffusionDiscordBot.csproj", "{A84D622C-505A-4718-AF02-0631E3137D4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F8CFE13E-2F3D-4658-AA6A-C90E3B46F1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8CFE13E-2F3D-4658-AA6A-C90E3B46F1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8CFE13E-2F3D-4658-AA6A-C90E3B46F1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8CFE13E-2F3D-4658-AA6A-C90E3B46F1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A84D622C-505A-4718-AF02-0631E3137D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A84D622C-505A-4718-AF02-0631E3137D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A84D622C-505A-4718-AF02-0631E3137D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A84D622C-505A-4718-AF02-0631E3137D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3683DA58-5CE4-459B-943E-3DFE0573E9F5}
+		SolutionGuid = {8DD12720-18CA-4A34-A201-3E291FC4F0B6}
 	EndGlobalSection
 EndGlobal

@@ -1,10 +1,10 @@
 ﻿@page "/"
 
+@using System.Security.Claims;
 @using Microsoft.AspNetCore.Components.Forms;
 @using Microsoft.AspNetCore.Components.Authorization
 
 @inject NavigationManager navigationManager
-@inject DiscordAuthticateStateProvider discordAuthticateStateProvider
 
 <h1>Hello, world!</h1>
 
@@ -118,7 +118,7 @@
 
     protected override void OnInitialized()
     {
-        if (System.Globalization.CultureInfo.CurrentUICulture.EnglishName == "ja")
+        if (System.Globalization.CultureInfo.CurrentUICulture.EnglishName == "Japanese (Japan)")
         {
             ModelData.SelectedLanguage = Language.Japanese;
         }
@@ -140,7 +140,7 @@
         {
             var subscriptionService = new Stripe.SubscriptionService();
 
-            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{discordAuthticateStateProvider.GetLoginUserId()}' AND status:'active'" });
+            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.Claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value}' AND status:'active'" });
 
             if (subscriptions.Data.Count == 0)
             {
@@ -196,6 +196,8 @@
 
     private async void OnClickSubscribeButton()
     {
+        var authenticationState = await AuthenticationState!;
+
         var service = new Stripe.Checkout.SessionService();
 
         var session = await service.CreateAsync(new Stripe.Checkout.SessionCreateOptions()
@@ -208,8 +210,8 @@
                 },
             },
             Mode = "subscription",
-            CustomerEmail = discordAuthticateStateProvider.GetLoginUserEmail(),
-            SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>(){ { "DiscordId", discordAuthticateStateProvider.GetLoginUserId() } } },
+            CustomerEmail = authenticationState.User.Claims.Single(claim => claim.Type == ClaimTypes.Email).Value,
+            SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>() { { "DiscordId", authenticationState.User.Claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value } } },
             SuccessUrl = navigationManager.BaseUri,
             CancelUrl = navigationManager.BaseUri,
             AutomaticTax = new Stripe.Checkout.SessionAutomaticTaxOptions() { Enabled = true },
@@ -220,16 +222,12 @@
 
     private void OnClickLoginButton()
     {
-        #if DEBUG
-            navigationManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=1060468061611753492&redirect_uri=https%3A%2F%2Flocalhost%3A7012%2Flogin&response_type=code&scope=identify%20email");
-        #else
-            navigationManager.NavigateTo("https://discord.com/api/oauth2/authorize?client_id=1060468061611753492&redirect_uri=https%3A%2F%2Fkawa0x0a.github.io%2FStableDiffusionDiscordBot%2Flogin&response_type=code&scope=identify%20email");
-        #endif
+        navigationManager.NavigateTo("login", true);
     }
 
     private void OnClickLogoutButton()
     {
-        navigationManager.NavigateTo("logout");
+        navigationManager.NavigateTo("logout", true);
     }
 
     private void OnClickCustomerPortalButton()

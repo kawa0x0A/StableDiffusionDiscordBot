@@ -1,27 +1,50 @@
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using AspNet.Security.OAuth.Discord;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using StableDiffusionDiscordBot;
 
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
-builder.RootComponents.Add<App>("#app");
-builder.RootComponents.Add<HeadOutlet>("head::after");
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddRouting(options => { options.LowercaseUrls = true; });
 
-builder.Services.AddScoped<DiscordAuthticateStateProvider>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = DiscordAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie().AddDiscord(options =>
+{
+    options.ClientId = "1060468061611753492";
+    options.ClientSecret = "RvzRzOlmHl-5ef58fslyGkBDKyxbzsgN";
 
-builder.Services.AddScoped<AuthenticationStateProvider>(options => options.GetRequiredService<DiscordAuthticateStateProvider>());
+    options.SaveTokens = true;
+});
 
-builder.Services.AddScoped<IAuthService, DiscordAuthService>();
+builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddApiAuthorization();
+Stripe.StripeConfiguration.ApiKey = "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";
 
-builder.Services.AddOptions();
+var app = builder.Build();
 
-builder.Configuration.AddUserSecrets<Program>(true).Build();
+if (!app.Environment.IsDevelopment())
+{
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-Stripe.StripeConfiguration.ApiKey = builder.Configuration["StripeApiKey"];
+app.UseHttpsRedirection();
 
-await builder.Build().RunAsync();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseCookiePolicy(new CookiePolicyOptions() { MinimumSameSitePolicy = SameSiteMode.None });
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
+
+app.Run();
