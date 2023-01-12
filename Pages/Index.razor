@@ -32,20 +32,11 @@
                 <img src="svg/image.svg" />
                 <label class="col-form-label">使用するAIモデル</label>
             </div>
-            <InputRadioGroup Name="ModelType" @bind-Value=ModelData.SelectedModelType class="form-check-inline">
-                <div class="col-2">
-                    <InputRadio Name="ModelType" Value="@ModelType.Stable" class="form-check-input" id="stable-button" />
-                    <label class="form-check-label" for="stable-button">Stable</label>
-                </div>
-                <div class="col-2">
-                    <InputRadio Name="ModelType" Value="@ModelType.Stable2" class="form-check-input" id="stable2-button" />
-                    <label class="form-check-label" for="stable2-button">Stable 2</label>
-                </div>
-                <div class="col-2">
-                    <InputRadio Name="ModelType" Value="@ModelType.Waifu" class="form-check-input" id="waifu-button" />
-                    <label class="form-check-label" for="waifu-button">Waifu</label>
-                </div>
-            </InputRadioGroup>
+            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 form-check-inline">
+                <option value="@ModelType.Stable">Stable</option>
+                <option value="@ModelType.Stable2">Stable2</option>
+                <option value="@ModelType.Waifu">Waifu</option>
+            </InputSelect>
         </div>
     </EditForm>
 </div>
