@@ -9,73 +9,81 @@
 <h1>Hello, world!</h1>
 
 <div class="container">
-    <EditForm Model="@ModelData">
-        <div class="row align-items-center">
-            <div class="col-6">
-                <img src="svg/translate.svg" />
-                <label class="col-form-label">Botに話しかけるときの言語</label>
+    <AuthorizeView>
+        <Authorized>
+            @switch (CurrentSubscriptionState)
+            {
+                case SubscriptionState.Enable:
+                    <EditForm Model="@ModelData" Context="authorize">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <img src="svg/translate.svg" />
+                                <label class="col-form-label">Botに話しかけるときの言語</label>
+                            </div>
+                            <InputRadioGroup Name="Language" @bind-Value=@ModelData.SelectedLanguage class="form-check-inline">
+                                <div class="col-3">
+                                    <InputRadio Name="Language" Value="@Language.English" class="form-check-input" id="english-button" />
+                                    <label class="form-check-label" for="english-button">English</label>
+                                </div>
+                                <div class="col-3">
+                                    <InputRadio Name="Language" Value="@Language.Japanese" class="form-check-input" id="japanese-button" />
+                                    <label class="form-check-label" for="japanese-button">日本語</label>
+                                </div>
+                            </InputRadioGroup>
+                        </div>
+                        <div class="border" />
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <img src="svg/image.svg" />
+                                <label class="col-form-label">使用するAIモデル</label>
+                            </div>
+                            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 form-check-inline">
+                                <option value="@ModelType.Stable">Stable</option>
+                                <option value="@ModelType.Stable2">Stable2</option>
+                                <option value="@ModelType.Waifu">Waifu</option>
+                            </InputSelect>
+                        </div>
+                        <div class="border" />
+                    </EditForm>
+                    break;
+            }
+
+            <div class="row justify-content-center">
+                <button class="col-6 mt-4 btn btn-warning" @onclick="OnClickLogoutButton">Logout</button>
             </div>
-            <InputRadioGroup Name="Language" @bind-Value=@ModelData.SelectedLanguage class="form-check-inline">
-                <div class="col-3">
-                    <InputRadio Name="Language" Value="@Language.English" class="form-check-input" id="english-button" />
-                    <label class="form-check-label" for="english-button">English</label>
-                </div>
-                <div class="col-3">
-                    <InputRadio Name="Language" Value="@Language.Japanese" class="form-check-input" id="japanese-button" />
-                    <label class="form-check-label" for="japanese-button">日本語</label>
-                </div>
-            </InputRadioGroup>
-        </div>
-        <div class="border" />
-        <div class="row align-items-center">
-            <div class="col-6">
-                <img src="svg/image.svg" />
-                <label class="col-form-label">使用するAIモデル</label>
+            
+            @switch (CurrentSubscriptionState)
+            {
+                case SubscriptionState.Disable:
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 mt-4 mb-4 btn btn-danger" @onclick="OnClickSubscribeButton">サブスクリプション登録</button>
+                    </div>
+                    break;
+
+                case SubscriptionState.Duplication:
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
+                    </div>
+                    break;
+
+                case SubscriptionState.Enable:
+                    <div class="border" />
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 mt-2 mb-4 btn btn-success" @onclick="OnClickAddBotButton">Botを追加</button>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
+                    </div>
+                    break;
+            }
+        </Authorized>
+        <NotAuthorized>
+            <div class="row justify-content-center">
+                <button class="col-6 mt-4 btn btn-primary" @onclick="OnClickLoginButton">Login</button>
             </div>
-            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 form-check-inline">
-                <option value="@ModelType.Stable">Stable</option>
-                <option value="@ModelType.Stable2">Stable2</option>
-                <option value="@ModelType.Waifu">Waifu</option>
-            </InputSelect>
-        </div>
-    </EditForm>
+        </NotAuthorized>
+    </AuthorizeView>
 </div>
-<div class="border" />
-<AuthorizeView>
-    <Authorized>
-        <div class="row justify-content-center">
-            <button class="col-6 mt-4 btn btn-warning" @onclick="OnClickLogoutButton">Logout</button>
-        </div>
-        @switch (CurrentSubscriptionState)
-        {
-            case SubscriptionState.Disable:
-                <div class="row justify-content-center">
-                    <button type="submit" class="col-6 mt-4 mb-4 btn btn-danger" @onclick="OnClickSubscribeButton">サブスクリプション登録</button>
-                </div>
-                break;
-
-            case SubscriptionState.Duplication:
-                <div class="row justify-content-center">
-                    <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
-                </div>
-                break;
-
-            case SubscriptionState.Enable:
-                <div class="row justify-content-center">
-                    <button type="submit" class="col-6 mt-2 mb-4 btn btn-success" @onclick="OnClickAddBotButton">Botを追加</button>
-                </div>
-                <div class="row justify-content-center">
-                    <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
-                </div>
-                break;
-        }
-    </Authorized>
-    <NotAuthorized>
-        <div class="row justify-content-center">
-            <button class="col-6 mt-4 btn btn-primary" @onclick="OnClickLoginButton">Login</button>
-        </div>
-    </NotAuthorized>
-</AuthorizeView>
 
 @code{
     [CascadingParameter]
