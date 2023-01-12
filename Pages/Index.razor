@@ -82,8 +82,6 @@
     </NotAuthorized>
 </AuthorizeView>
 
-@culture
-
 @code{
     [CascadingParameter]
     private Task<AuthenticationState>? AuthenticationState { get; set; }
@@ -118,13 +116,9 @@
 
     private SubscriptionState CurrentSubscriptionState { get; set; } = SubscriptionState.None;
 
-    private string culture = "";
-
     protected override void OnInitialized()
     {
-        culture = System.Globalization.CultureInfo.CurrentUICulture.Name;
-
-        if (culture == "ja-JP")
+        if (System.Globalization.CultureInfo.CurrentCulture.Name == "ja-JP")
         {
             ModelData.SelectedLanguage = Language.Japanese;
         }
