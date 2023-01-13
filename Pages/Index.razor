@@ -37,10 +37,11 @@
                                 <img src="svg/image.svg" />
                                 <label class="col-form-label">@Properties.Resources.Model</label>
                             </div>
-                            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 form-check-inline">
-                                <option value="@ModelType.Stable">Stable</option>
-                                <option value="@ModelType.Stable2">Stable2</option>
-                                <option value="@ModelType.Waifu">Waifu</option>
+                            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 dropdown form-check-inline">
+                                <option value="@ModelType.Stable" class="dropdown-item">Stable</option>
+                                <option value="@ModelType.Stable2" class="dropdown-item">Stable2</option>
+                                <option value="@ModelType.Waifu" class="dropdown-item">Waifu</option>
+                                <option value="@ModelType.Anything" class="dropdown-item">Anything</option>
                             </InputSelect>
                         </div>
                         <div class="border" />
@@ -103,6 +104,7 @@
         Stable,
         Stable2,
         Waifu,
+        Anything,
     }
 
     private enum SubscriptionState
@@ -182,6 +184,8 @@
                     case ModelType.Stable2: return "https://discord.com/api/oauth2/authorize?client_id=1063030699130626158&permissions=43008&scope=bot";
 
                     case ModelType.Waifu:   return "https://discord.com/api/oauth2/authorize?client_id=1054663362421727272&permissions=43008&scope=bot";
+
+                    case ModelType.Anything: return "https://discord.com/api/oauth2/authorize?client_id=1063347889318936626&permissions=43008&scope=bot";
                 }
                 break;
 
@@ -193,6 +197,8 @@
                     case ModelType.Stable2: return "https://discord.com/api/oauth2/authorize?client_id=1063030808631312434&permissions=43008&scope=bot";
 
                     case ModelType.Waifu:   return "https://discord.com/api/oauth2/authorize?client_id=1054663743113543710&permissions=43008&scope=bot";
+
+                    case ModelType.Anything: return "https://discord.com/api/oauth2/authorize?client_id=1063348061549625354&permissions=43008&scope=bot";
                 }
                 break;
         }
