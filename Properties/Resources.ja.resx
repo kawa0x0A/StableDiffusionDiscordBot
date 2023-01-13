@@ -138,4 +138,25 @@
   <data name="Subscription" xml:space="preserve">
     <value>サブスクリプション登録</value>
   </data>
+  <data name="TableHeaderFeatures" xml:space="preserve">
+    <value>特徴</value>
+  </data>
+  <data name="TableHeaderModelName" xml:space="preserve">
+    <value>モデル名</value>
+  </data>
+  <data name="AnythingFeatures" xml:space="preserve">
+    <value>NobelAIやWaifu diffusionより高品質な画像が生成できる</value>
+  </data>
+  <data name="WaifuDiffusionFeatures" xml:space="preserve">
+    <value>アニメ調イラストや二次元美少女イラストに特化した画像が生成できる</value>
+  </data>
+  <data name="StableDiffusionFeatures" xml:space="preserve">
+    <value>人物や背景など多くの種類の画像が生成できる</value>
+  </data>
+  <data name="StableDiffusion2Features" xml:space="preserve">
+    <value>Stable Diffusion より高解像度な画像が生成できる</value>
+  </data>
+  <data name="TableDescription" xml:space="preserve">
+    <value>使用できるAIモデルの種類について</value>
+  </data>
 </root>
