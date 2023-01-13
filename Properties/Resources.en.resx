@@ -138,4 +138,25 @@
   <data name="Subscription" xml:space="preserve">
     <value>Register Subscription</value>
   </data>
+  <data name="TableHeaderFeatures" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="TableHeaderModelName" xml:space="preserve">
+    <value>Model Name</value>
+  </data>
+  <data name="AnythingFeatures" xml:space="preserve">
+    <value>Generates higher quality images than NobelAI or Waifu diffusion</value>
+  </data>
+  <data name="WaifuDiffusionFeatures" xml:space="preserve">
+    <value>Images specialized for two-dimensional bishojo illustrations can be generated.</value>
+  </data>
+  <data name="StableDiffusionFeatures" xml:space="preserve">
+    <value>Many types of images can be generated, including people and backgrounds</value>
+  </data>
+  <data name="StableDiffusion2Features" xml:space="preserve">
+    <value>Stable Diffusion can produce higher resolution images.</value>
+  </data>
+  <data name="TableDescription" xml:space="preserve">
+    <value>About the types of AI models that can be used</value>
+  </data>
 </root>
