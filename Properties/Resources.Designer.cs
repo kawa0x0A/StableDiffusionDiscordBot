@@ -61,7 +61,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Add Bot に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string AddBot {
             get {
@@ -70,7 +70,16 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Generates higher quality images than NobelAI or Waifu diffusion に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string AnythingFeatures {
+            get {
+                return ResourceManager.GetString("AnythingFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   CustomerPortal に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string CustomerPortal {
             get {
@@ -79,7 +88,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Bot Language に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Language {
             get {
@@ -88,7 +97,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Login に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Login {
             get {
@@ -97,7 +106,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Logout に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Logout {
             get {
@@ -106,7 +115,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Use AI Model に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Model {
             get {
@@ -115,11 +124,65 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Stable Diffusion can produce higher resolution images. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StableDiffusion2Features {
+            get {
+                return ResourceManager.GetString("StableDiffusion2Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Many types of images can be generated, including people and backgrounds に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string StableDiffusionFeatures {
+            get {
+                return ResourceManager.GetString("StableDiffusionFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Register Subscription に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Subscription {
             get {
                 return ResourceManager.GetString("Subscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   About the types of AI models that can be used に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TableDescription {
+            get {
+                return ResourceManager.GetString("TableDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Features に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TableHeaderFeatures {
+            get {
+                return ResourceManager.GetString("TableHeaderFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Model Name に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TableHeaderModelName {
+            get {
+                return ResourceManager.GetString("TableHeaderModelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Images specialized for two-dimensional bishojo illustrations can be generated. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string WaifuDiffusionFeatures {
+            get {
+                return ResourceManager.GetString("WaifuDiffusionFeatures", resourceCulture);
             }
         }
     }
