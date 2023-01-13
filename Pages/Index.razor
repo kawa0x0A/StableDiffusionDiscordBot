@@ -18,7 +18,7 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <img src="svg/translate.svg" />
-                                <label class="col-form-label">Botに話しかけるときの言語</label>
+                                <label class="col-form-label">@Properties.Resources.Language</label>
                             </div>
                             <InputRadioGroup Name="Language" @bind-Value=@ModelData.SelectedLanguage class="form-check-inline">
                                 <div class="col-3">
@@ -35,7 +35,7 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <img src="svg/image.svg" />
-                                <label class="col-form-label">使用するAIモデル</label>
+                                <label class="col-form-label">@Properties.Resources.Model</label>
                             </div>
                             <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 form-check-inline">
                                 <option value="@ModelType.Stable">Stable</option>
@@ -49,30 +49,30 @@
             }
 
             <div class="row justify-content-center">
-                <button class="col-6 mt-4 btn btn-warning" @onclick="OnClickLogoutButton">Logout</button>
+                <button class="col-6 mt-4 btn btn-warning" @onclick="OnClickLogoutButton">@Properties.Resources.Logout</button>
             </div>
             
             @switch (CurrentSubscriptionState)
             {
                 case SubscriptionState.Disable:
                     <div class="row justify-content-center">
-                        <button type="submit" class="col-6 mt-4 mb-4 btn btn-danger" @onclick="OnClickSubscribeButton">サブスクリプション登録</button>
+                        <button type="submit" class="col-6 mt-4 mb-4 btn btn-danger" @onclick="OnClickSubscribeButton">@Properties.Resources.Subscription</button>
                     </div>
                     break;
 
                 case SubscriptionState.Duplication:
                     <div class="row justify-content-center">
-                        <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
+                        <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">@Properties.Resources.CustomerPortal</button>
                     </div>
                     break;
 
                 case SubscriptionState.Enable:
                     <div class="border" />
                     <div class="row justify-content-center">
-                        <button type="submit" class="col-6 mt-2 mb-4 btn btn-success" @onclick="OnClickAddBotButton">Botを追加</button>
+                        <button type="submit" class="col-6 mt-2 mb-4 btn btn-success" @onclick="OnClickAddBotButton">@Properties.Resources.AddBot</button>
                     </div>
                     <div class="row justify-content-center">
-                        <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">カスタマーポータル</button>
+                        <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">@Properties.Resources.CustomerPortal</button>
                     </div>
                     break;
             }
@@ -81,7 +81,7 @@
             <div class="row justify-content-center h-25">
                 <button class="col-6 mt-4 btn btn-primary" @onclick="OnClickLoginButton">
                     <img src="svg/discord-mark-white.svg" class="img-fluid w-25 h-50" />
-                    <span class="fs-2 align-middle">Login</span>
+                    <span class="fs-2 align-middle">@Properties.Resources.Login</span>
                 </button>
             </div>
         </NotAuthorized>
