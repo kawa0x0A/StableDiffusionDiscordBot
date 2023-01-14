@@ -69,7 +69,7 @@
             {
                 case SubscriptionState.Disable:
                     <div class="row justify-content-center">
-                        <p class="col-auto fs-2 text-center">@Properties.Resources.SubscriptionDisableDescription</p>
+                        <p class="col-auto fs-2 text-center">@Properties.Resources.SubscriptionDisableDescription1<br/>@Properties.Resources.SubscriptionDisableDescription2</p>
                     </div>
                     <div class="row justify-content-center">
                         <button type="submit" class="col-6 mt-4 mb-4 btn btn-danger" @onclick="OnClickSubscribeButton">@Properties.Resources.Subscription</button>
@@ -78,7 +78,7 @@
 
                 case SubscriptionState.Duplication:
                     <div class="row justify-content-center">
-                        <p class="col-auto fs-2 text-center">@Properties.Resources.SubscriptionDuplicationDescription</p>
+                        <p class="col-auto fs-2 text-center">@Properties.Resources.SubscriptionDuplicationDescription1<br/>@Properties.Resources.SubscriptionDuplicationDescription2</p>
                     </div>
                     <div class="row justify-content-center">
                         <button type="submit" class="col-6 mt-4 btn btn-info" @onclick="OnClickCustomerPortalButton">@Properties.Resources.CustomerPortal</button>
@@ -87,7 +87,7 @@
 
                 case SubscriptionState.Enable:
                     <div class="row justify-content-center">
-                        <p class="col-auto fs-2 text-center">@Properties.Resources.SubscriptionEnableDescription</p>
+                        <p class="col-auto fs-2 text-center">@Properties.Resources.SubscriptionEnableDescription1<br/>@Properties.Resources.SubscriptionEnableDescription2<br/>@Properties.Resources.SubscriptionEnableDescription3</p>
                     </div>
                     <div class="row justify-content-center">
                         <button type="submit" class="col-6 mt-2 mb-4 btn btn-success" @onclick="OnClickAddBotButton">@Properties.Resources.AddBot</button>
