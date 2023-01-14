@@ -220,7 +220,7 @@
     <value>Q. Maybe they'll pull out your Discord account or credit card info?</value>
   </data>
   <data name="AccessInfomationAnswer1" xml:space="preserve">
-    <value>A. Discord and credit card information cannot be verified directly by the site's creator. The site is also publicly available on</value>
+    <value>A. Discord account and credit card information cannot be verified directly by the site's creator. The site is also publicly available on</value>
   </data>
   <data name="WhenBilliedQuestion" xml:space="preserve">
     <value>Q. When will I be billed?</value>
@@ -266,5 +266,11 @@
   </data>
   <data name="SubscriptionEnableDescription3" xml:space="preserve">
     <value>please terminate your subscription through the Customer Portal.</value>
+  </data>
+  <data name="BillingQuestion" xml:space="preserve">
+    <value>Q. How much does it cost?</value>
+  </data>
+  <data name="BillingAnswer" xml:space="preserve">
+    <value>A. Adding a bot to the Discord server is free. Please see the fee schedule above for generating images.</value>
   </data>
 </root>
