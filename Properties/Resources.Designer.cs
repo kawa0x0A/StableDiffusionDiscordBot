@@ -79,11 +79,29 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///   A. Discord and credit card information cannot be verified directly by the site&apos;s creator. The site is also publicly available on &lt;a href=&quot;https://github.com/kawa0x0A/StableDiffusionDiscordBot&quot;&gt;Github&lt;/a&gt; so you can be sure they are not doing anything suspicious. に類似しているローカライズされた文字列を検索します。
+        ///   A. Discord and credit card information cannot be verified directly by the site&apos;s creator. The site is also publicly available on に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string AccessInfomationAnswer {
+        internal static string AccessInfomationAnswer1 {
             get {
-                return ResourceManager.GetString("AccessInfomationAnswer", resourceCulture);
+                return ResourceManager.GetString("AccessInfomationAnswer1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   GitHub に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string AccessInfomationAnswer2 {
+            get {
+                return ResourceManager.GetString("AccessInfomationAnswer2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   so you can be sure they are not doing anything suspicious. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string AccessInfomationAnswer3 {
+            get {
+                return ResourceManager.GetString("AccessInfomationAnswer3", resourceCulture);
             }
         }
         
@@ -169,6 +187,15 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
+        ///   How to use the Bot に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string HowToUseBot {
+            get {
+                return ResourceManager.GetString("HowToUseBot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   How to use this site に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string HowToUseThisSite {
@@ -232,11 +259,29 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///   A. Please contact the developer&apos;s &lt;a href=&quot;https://twitter.com/kawa0x0A&quot;&gt;Twitter account&lt;/a&gt; via reply or direct message. に類似しているローカライズされた文字列を検索します。
+        ///   A. Please contact the developer&apos;s に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string OtherProblemAnswer {
+        internal static string OtherProblemAnswer1 {
             get {
-                return ResourceManager.GetString("OtherProblemAnswer", resourceCulture);
+                return ResourceManager.GetString("OtherProblemAnswer1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Twitter account に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string OtherProblemAnswer2 {
+            get {
+                return ResourceManager.GetString("OtherProblemAnswer2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   via reply or direct message.  via reply or direct message. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string OtherProblemAnswer3 {
+            get {
+                return ResourceManager.GetString("OtherProblemAnswer3", resourceCulture);
             }
         }
         
