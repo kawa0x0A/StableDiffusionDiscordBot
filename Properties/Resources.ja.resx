@@ -220,7 +220,7 @@
     <value>Q. Discordアカウントやクレジットカードの情報を抜き取るんじゃないか?</value>
   </data>
   <data name="AccessInfomationAnswer1" xml:space="preserve">
-    <value>A. Discordやクレジットカードの情報をサイトの製作者は直接確認できません。またこのサイトは</value>
+    <value>A. Discordアカウントやクレジットカードの情報をサイトの製作者は直接確認できません。またこのサイトは</value>
   </data>
   <data name="WhenBilliedQuestion" xml:space="preserve">
     <value>Q. 使用料金の請求はいつ行われる?</value>
@@ -266,5 +266,11 @@
   </data>
   <data name="SubscriptionEnableDescription3" xml:space="preserve">
     <value>Botの利用を終了したい場合はカスタマーポータルからサブスクリプションを終了してください。</value>
+  </data>
+  <data name="BillingQuestion" xml:space="preserve">
+    <value>Q. 利用料金はいくらですか?</value>
+  </data>
+  <data name="BillingAnswer" xml:space="preserve">
+    <value>A. DiscordサーバーへのBotの追加は無料です。画像の生成については上記の料金表をご覧ください。</value>
   </data>
 </root>
