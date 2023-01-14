@@ -219,8 +219,8 @@
   <data name="AccessInfomationQuestion" xml:space="preserve">
     <value>Q. Maybe they'll pull out your Discord account or credit card info?</value>
   </data>
-  <data name="AccessInfomationAnswer" xml:space="preserve">
-    <value>A. Discord and credit card information cannot be verified directly by the site's creator. The site is also publicly available on &lt;a href="https://github.com/kawa0x0A/StableDiffusionDiscordBot"&gt;Github&lt;/a&gt; so you can be sure they are not doing anything suspicious.</value>
+  <data name="AccessInfomationAnswer1" xml:space="preserve">
+    <value>A. Discord and credit card information cannot be verified directly by the site's creator. The site is also publicly available on</value>
   </data>
   <data name="WhenBilliedQuestion" xml:space="preserve">
     <value>Q. When will I be billed?</value>
@@ -237,7 +237,22 @@
   <data name="OtherProblemQuestion" xml:space="preserve">
     <value>Q. Other problems like this happened.</value>
   </data>
-  <data name="OtherProblemAnswer" xml:space="preserve">
-    <value>A. Please contact the developer's &lt;a href="https://twitter.com/kawa0x0A"&gt;Twitter account&lt;/a&gt; via reply or direct message.</value>
+  <data name="OtherProblemAnswer1" xml:space="preserve">
+    <value>A. Please contact the developer's</value>
+  </data>
+  <data name="HowToUseBot" xml:space="preserve">
+    <value>How to use the Bot</value>
+  </data>
+  <data name="OtherProblemAnswer2" xml:space="preserve">
+    <value>Twitter account</value>
+  </data>
+  <data name="OtherProblemAnswer3" xml:space="preserve">
+    <value>via reply or direct message.  via reply or direct message.</value>
+  </data>
+  <data name="AccessInfomationAnswer2" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="AccessInfomationAnswer3" xml:space="preserve">
+    <value>so you can be sure they are not doing anything suspicious.</value>
   </data>
 </root>
