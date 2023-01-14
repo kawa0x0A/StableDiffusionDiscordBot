@@ -177,14 +177,14 @@
   <data name="SignUpSubscription" xml:space="preserve">
     <value>サブスクリプションに登録する</value>
   </data>
-  <data name="SubscriptionDisableDescription" xml:space="preserve">
-    <value>サブスクリプションが未登録です。&lt;br/&gt;Botの使用を開始するにはサブスクリプションに登録してください。</value>
+  <data name="SubscriptionDisableDescription1" xml:space="preserve">
+    <value>サブスクリプションが未登録です。</value>
   </data>
-  <data name="SubscriptionDuplicationDescription" xml:space="preserve">
-    <value>サブスクリプションが複数登録されています。&lt;br/&gt;料金の請求が正常に行われない恐れがあるため、カスタマーポータルで登録状況をご確認ください。</value>
+  <data name="SubscriptionDuplicationDescription1" xml:space="preserve">
+    <value>サブスクリプションが複数登録されています。</value>
   </data>
-  <data name="SubscriptionEnableDescription" xml:space="preserve">
-    <value>サブスクリプションへの登録ありがとうございます。&lt;br/&gt;BotをDiscordサーバーに追加することでAIによる画像生成が利用できます。&lt;br/&gt;Botの利用を終了したい場合はカスタマーポータルからサブスクリプションを終了してください。</value>
+  <data name="SubscriptionEnableDescription1" xml:space="preserve">
+    <value>サブスクリプションへの登録ありがとうございます。</value>
   </data>
   <data name="SendDiscordToBot" xml:space="preserve">
     <value>Discordで使用したいBotにリプライを送る</value>
@@ -254,5 +254,17 @@
   </data>
   <data name="AccessInfomationAnswer3" xml:space="preserve">
     <value>で公開されているので怪しいことをしていないか確認できます。</value>
+  </data>
+  <data name="SubscriptionDisableDescription2" xml:space="preserve">
+    <value>Botの使用を開始するにはサブスクリプションに登録してください。</value>
+  </data>
+  <data name="SubscriptionDuplicationDescription2" xml:space="preserve">
+    <value>料金の請求が正常に行われない恐れがあるため、カスタマーポータルで登録状況をご確認ください。</value>
+  </data>
+  <data name="SubscriptionEnableDescription2" xml:space="preserve">
+    <value>BotをDiscordサーバーに追加することでAIによる画像生成が利用できます。</value>
+  </data>
+  <data name="SubscriptionEnableDescription3" xml:space="preserve">
+    <value>Botの利用を終了したい場合はカスタマーポータルからサブスクリプションを終了してください。</value>
   </data>
 </root>
