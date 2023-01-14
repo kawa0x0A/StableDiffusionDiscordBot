@@ -136,7 +136,7 @@
     <value>Use AI Model</value>
   </data>
   <data name="Subscription" xml:space="preserve">
-    <value>Register Subscription</value>
+    <value>Sign up Subscription</value>
   </data>
   <data name="TableHeaderFeatures" xml:space="preserve">
     <value>Features</value>
@@ -177,14 +177,14 @@
   <data name="AddBotDiscord" xml:space="preserve">
     <value>Adding a Bot to the Discord Server</value>
   </data>
-  <data name="SubscriptionDisableDescription" xml:space="preserve">
-    <value>You do not have a subscription, please sign up for a subscription to start using Bot.</value>
+  <data name="SubscriptionDisableDescription1" xml:space="preserve">
+    <value>You do not have a subscription,</value>
   </data>
-  <data name="SubscriptionDuplicationDescription" xml:space="preserve">
-    <value>You have multiple subscriptions. Please check your subscription status in the Customer Portal as you may not have been billed correctly.</value>
+  <data name="SubscriptionDuplicationDescription1" xml:space="preserve">
+    <value>You have multiple subscriptions.</value>
   </data>
-  <data name="SubscriptionEnableDescription" xml:space="preserve">
-    <value>Thank you for signing up for a subscription, you can add the Bot to your Discord server to use AI image generation, if you wish to terminate your use of the Bot, please terminate your subscription through the Customer Portal.</value>
+  <data name="SubscriptionEnableDescription1" xml:space="preserve">
+    <value>Thank you for signing up for a subscription, if you wish to terminate your use of the Bot,</value>
   </data>
   <data name="SendDiscordToBot" xml:space="preserve">
     <value>Send a reply to the bot you want to use on Discord</value>
@@ -254,5 +254,17 @@
   </data>
   <data name="AccessInfomationAnswer3" xml:space="preserve">
     <value>so you can be sure they are not doing anything suspicious.</value>
+  </data>
+  <data name="SubscriptionDisableDescription2" xml:space="preserve">
+    <value>please sign up for a subscription to start using Bot.</value>
+  </data>
+  <data name="SubscriptionDuplicationDescription2" xml:space="preserve">
+    <value>Please check your subscription status in the Customer Portal as you may not have been billed correctly.</value>
+  </data>
+  <data name="SubscriptionEnableDescription2" xml:space="preserve">
+    <value>you can add the Bot to your Discord server to use AI image generation,</value>
+  </data>
+  <data name="SubscriptionEnableDescription3" xml:space="preserve">
+    <value>please terminate your subscription through the Customer Portal.</value>
   </data>
 </root>
