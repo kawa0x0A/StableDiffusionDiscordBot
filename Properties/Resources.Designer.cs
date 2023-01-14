@@ -340,7 +340,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///   Register Subscription に類似しているローカライズされた文字列を検索します。
+        ///   Sign up Subscription に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Subscription {
             get {
@@ -358,29 +358,65 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///   You do not have a subscription, please sign up for a subscription to start using Bot. に類似しているローカライズされた文字列を検索します。
+        ///   You do not have a subscription, に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string SubscriptionDisableDescription {
+        internal static string SubscriptionDisableDescription1 {
             get {
-                return ResourceManager.GetString("SubscriptionDisableDescription", resourceCulture);
+                return ResourceManager.GetString("SubscriptionDisableDescription1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   You have multiple subscriptions. Please check your subscription status in the Customer Portal as you may not have been billed correctly. に類似しているローカライズされた文字列を検索します。
+        ///   please sign up for a subscription to start using Bot. に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string SubscriptionDuplicationDescription {
+        internal static string SubscriptionDisableDescription2 {
             get {
-                return ResourceManager.GetString("SubscriptionDuplicationDescription", resourceCulture);
+                return ResourceManager.GetString("SubscriptionDisableDescription2", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Thank you for signing up for a subscription, you can add the Bot to your Discord server to use AI image generation, if you wish to terminate your use of the Bot, please terminate your subscription through the Customer Portal. に類似しているローカライズされた文字列を検索します。
+        ///   You have multiple subscriptions. に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string SubscriptionEnableDescription {
+        internal static string SubscriptionDuplicationDescription1 {
             get {
-                return ResourceManager.GetString("SubscriptionEnableDescription", resourceCulture);
+                return ResourceManager.GetString("SubscriptionDuplicationDescription1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please check your subscription status in the Customer Portal as you may not have been billed correctly. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SubscriptionDuplicationDescription2 {
+            get {
+                return ResourceManager.GetString("SubscriptionDuplicationDescription2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Thank you for signing up for a subscription, if you wish to terminate your use of the Bot, に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SubscriptionEnableDescription1 {
+            get {
+                return ResourceManager.GetString("SubscriptionEnableDescription1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   you can add the Bot to your Discord server to use AI image generation, に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SubscriptionEnableDescription2 {
+            get {
+                return ResourceManager.GetString("SubscriptionEnableDescription2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   please terminate your subscription through the Customer Portal. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SubscriptionEnableDescription3 {
+            get {
+                return ResourceManager.GetString("SubscriptionEnableDescription3", resourceCulture);
             }
         }
         
