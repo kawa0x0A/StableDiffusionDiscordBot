@@ -159,4 +159,85 @@
   <data name="TableDescription" xml:space="preserve">
     <value>About the types of AI models that can be used</value>
   </data>
+  <data name="AboutSite" xml:space="preserve">
+    <value>What is this site?</value>
+  </data>
+  <data name="SiteDescription" xml:space="preserve">
+    <value>You can add a bot to Discord that performs AI-based image generation.</value>
+  </data>
+  <data name="HowToUseThisSite" xml:space="preserve">
+    <value>How to use this site</value>
+  </data>
+  <data name="LoginWithDiscord" xml:space="preserve">
+    <value>Login with your Discord account</value>
+  </data>
+  <data name="SignUpSubscription" xml:space="preserve">
+    <value>Sign up for a subscription</value>
+  </data>
+  <data name="AddBotDiscord" xml:space="preserve">
+    <value>Adding a Bot to the Discord Server</value>
+  </data>
+  <data name="SubscriptionDisableDescription" xml:space="preserve">
+    <value>You do not have a subscription, please sign up for a subscription to start using Bot.</value>
+  </data>
+  <data name="SubscriptionDuplicationDescription" xml:space="preserve">
+    <value>You have multiple subscriptions. Please check your subscription status in the Customer Portal as you may not have been billed correctly.</value>
+  </data>
+  <data name="SubscriptionEnableDescription" xml:space="preserve">
+    <value>Thank you for signing up for a subscription, you can add the Bot to your Discord server to use AI image generation, if you wish to terminate your use of the Bot, please terminate your subscription through the Customer Portal.</value>
+  </data>
+  <data name="SendDiscordToBot" xml:space="preserve">
+    <value>Send a reply to the bot you want to use on Discord</value>
+  </data>
+  <data name="WaitWhileGenerated" xml:space="preserve">
+    <value>Wait a while for the image to be generated</value>
+  </data>
+  <data name="GeneratedImageFromBot" xml:space="preserve">
+    <value>The generated image is sent by reply from the bot.</value>
+  </data>
+  <data name="AboutCharges" xml:space="preserve">
+    <value>About Charges</value>
+  </data>
+  <data name="NumberOfImages" xml:space="preserve">
+    <value>Number of images generated per month</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+  <data name="FreeCount" xml:space="preserve">
+    <value>0 to 10 sheets</value>
+  </data>
+  <data name="FreePay" xml:space="preserve">
+    <value>US$0 (no usage fee)</value>
+  </data>
+  <data name="SubscriptionCount" xml:space="preserve">
+    <value>11 sheets~.</value>
+  </data>
+  <data name="SubscriptionPay" xml:space="preserve">
+    <value>A fee of US$ 0.01 is charged for each sheet used.</value>
+  </data>
+  <data name="AccessInfomationQuestion" xml:space="preserve">
+    <value>Q. Maybe they'll pull out your Discord account or credit card info?</value>
+  </data>
+  <data name="AccessInfomationAnswer" xml:space="preserve">
+    <value>A. Discord and credit card information cannot be verified directly by the site's creator. The site is also publicly available on &lt;a href="https://github.com/kawa0x0A/StableDiffusionDiscordBot"&gt;Github&lt;/a&gt; so you can be sure they are not doing anything suspicious.</value>
+  </data>
+  <data name="WhenBilliedQuestion" xml:space="preserve">
+    <value>Q. When will I be billed?</value>
+  </data>
+  <data name="WhenBilledAnswer" xml:space="preserve">
+    <value>A. You will be billed for your subscription on a month-to-month basis upon signing up for a subscription.</value>
+  </data>
+  <data name="WantToCancelSubscriptionQuestion" xml:space="preserve">
+    <value>Q. I want to cancel my subscription.</value>
+  </data>
+  <data name="WantToCancelSubscriptionAnswer" xml:space="preserve">
+    <value>A. Please cancel your subscription through the Customer Portal button that appears after logging in on Discord.</value>
+  </data>
+  <data name="OtherProblemQuestion" xml:space="preserve">
+    <value>Q. Other problems like this happened.</value>
+  </data>
+  <data name="OtherProblemAnswer" xml:space="preserve">
+    <value>A. Please contact the developer's &lt;a href="https://twitter.com/kawa0x0A"&gt;Twitter account&lt;/a&gt; via reply or direct message.</value>
+  </data>
 </root>
