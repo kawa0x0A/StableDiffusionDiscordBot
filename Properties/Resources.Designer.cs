@@ -79,7 +79,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///   A. Discord and credit card information cannot be verified directly by the site&apos;s creator. The site is also publicly available on に類似しているローカライズされた文字列を検索します。
+        ///   A. Discord account and credit card information cannot be verified directly by the site&apos;s creator. The site is also publicly available on に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string AccessInfomationAnswer1 {
             get {
@@ -138,6 +138,24 @@ namespace StableDiffusionDiscordBot.Properties {
         internal static string AnythingFeatures {
             get {
                 return ResourceManager.GetString("AnythingFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   A. Adding a bot to the Discord server is free. Please see the fee schedule above for generating images. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string BillingAnswer {
+            get {
+                return ResourceManager.GetString("BillingAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Q. How much does it cost? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string BillingQuestion {
+            get {
+                return ResourceManager.GetString("BillingQuestion", resourceCulture);
             }
         }
         
@@ -277,7 +295,7 @@ namespace StableDiffusionDiscordBot.Properties {
         }
         
         /// <summary>
-        ///   via reply or direct message.  via reply or direct message. に類似しているローカライズされた文字列を検索します。
+        ///   via reply or direct message. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string OtherProblemAnswer3 {
             get {
