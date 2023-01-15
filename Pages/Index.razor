@@ -22,6 +22,10 @@
     </div>
     <AuthorizeView>
         <Authorized>
+            <div class="row justify-content-center">
+                <button class="col-auto mt-4 btn btn-warning" @onclick="OnClickLogoutButton">@Properties.Resources.Logout</button>
+            </div>
+
             @switch (CurrentSubscriptionState)
             {
                 case SubscriptionState.Enable:
@@ -60,10 +64,6 @@
                     break;
             }
 
-            <div class="row justify-content-center">
-                <button class="col-auto mt-4 btn btn-warning" @onclick="OnClickLogoutButton">@Properties.Resources.Logout</button>
-            </div>
-            
             @switch (CurrentSubscriptionState)
             {
                 case SubscriptionState.Disable:
