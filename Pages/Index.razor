@@ -49,9 +49,9 @@
                                 <label class="col-form-label">@Properties.Resources.Model</label>
                             </div>
                             <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 dropdown form-check-inline">
-                                <option value="@ModelType.Stable" class="dropdown-item">Stable</option>
-                                <option value="@ModelType.Stable2" class="dropdown-item">Stable2</option>
-                                <option value="@ModelType.Waifu" class="dropdown-item">Waifu</option>
+                                <option value="@ModelType.Stable" class="dropdown-item">Stable Diffusion</option>
+                                <option value="@ModelType.Stable2" class="dropdown-item">Stable Diffusion 2</option>
+                                <option value="@ModelType.Waifu" class="dropdown-item">Waifu Diffusion</option>
                                 <option value="@ModelType.Anything" class="dropdown-item">Anything</option>
                             </InputSelect>
                         </div>
@@ -106,6 +106,9 @@
             </div>
         </NotAuthorized>
     </AuthorizeView>
+    <div class="row">
+        <p class="fs-3">@Properties.Resources.Caution</p>
+    </div>
     <div class="row">
         <p class="fs-3">@Properties.Resources.HowToUseBot</p>
         <ul class="list-group list-group-numbered list-group-flush col-auto">
