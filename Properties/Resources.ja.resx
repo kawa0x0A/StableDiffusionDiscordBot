@@ -273,4 +273,7 @@
   <data name="BillingAnswer" xml:space="preserve">
     <value>A. DiscordサーバーへのBotの追加は無料です。画像の生成については上記の料金表をご覧ください。</value>
   </data>
+  <data name="Caution" xml:space="preserve">
+    <value>注意 : Botで生成した画像についての法的責任は生成者に帰属します。</value>
+  </data>
 </root>
