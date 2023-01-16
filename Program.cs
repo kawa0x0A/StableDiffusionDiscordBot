@@ -25,6 +25,8 @@ builder.Services.AddAuthentication(options =>
     options.ClientId = builder.Configuration["DiscordClientId"]!;
     options.ClientSecret = builder.Configuration["DiscordSecret"]!;
 
+    options.Scope.Add("email");
+
     options.AccessDeniedPath = new PathString("/");
 
     options.SaveTokens = true;
