@@ -36,11 +36,11 @@
                                 <label class="col-form-label">@Properties.Resources.Language</label>
                             </div>
                             <InputRadioGroup Name="Language" @bind-Value=@ModelData.SelectedLanguage class="form-check-inline">
-                                <div class="col-3">
+                                <div class="col-auto">
                                     <InputRadio Name="Language" Value="@Language.English" class="form-check-input" id="english-button" />
                                     <label class="form-check-label" for="english-button">English</label>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-auto">
                                     <InputRadio Name="Language" Value="@Language.Japanese" class="form-check-input" id="japanese-button" />
                                     <label class="form-check-label" for="japanese-button">日本語</label>
                                 </div>
@@ -52,7 +52,7 @@
                                 <img src="svg/image.svg" />
                                 <label class="col-form-label">@Properties.Resources.Model</label>
                             </div>
-                            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-3 dropdown form-check-inline">
+                            <InputSelect Name="ModelType" @bind-Value=ModelData.SelectedModelType class="col-auto dropdown form-check-inline">
                                 <option value="@ModelType.Stable" class="dropdown-item">Stable Diffusion</option>
                                 <option value="@ModelType.Stable2" class="dropdown-item">Stable Diffusion 2</option>
                                 <option value="@ModelType.Waifu" class="dropdown-item">Waifu Diffusion</option>
