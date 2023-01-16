@@ -252,7 +252,7 @@
         {
             var subscriptionService = new Stripe.SubscriptionService();
 
-            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.Claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value}' AND status:'active'" });
+            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.FindFirstValue(ClaimTypes.NameIdentifier)}' AND status:'active'" });
 
             if (subscriptions.Data.Count == 0)
             {
@@ -318,6 +318,8 @@
     {
         var authenticationState = await AuthenticationState!;
 
+        var claims = authenticationState!.User.Claims.ToArray();
+
         var service = new Stripe.Checkout.SessionService();
 
         var session = await service.CreateAsync(new Stripe.Checkout.SessionCreateOptions()
@@ -330,8 +332,8 @@
                 },
             },
             Mode = "subscription",
-            CustomerEmail = authenticationState.User.Claims.Single(claim => claim.Type == ClaimTypes.Email).Value,
-            SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>() { { "DiscordId", authenticationState.User.Claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value } } },
+            CustomerEmail = claims.Single(c => c.Type == ClaimTypes.Email).Value,
+            SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>() { { "DiscordId", claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value } } },
             SuccessUrl = navigationManager.BaseUri,
             CancelUrl = navigationManager.BaseUri,
             AutomaticTax = new Stripe.Checkout.SessionAutomaticTaxOptions() { Enabled = true },
