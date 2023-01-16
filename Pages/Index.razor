@@ -334,7 +334,7 @@
             Mode = "subscription",
             CustomerEmail = claims.Single(c => c.Type == ClaimTypes.Email).Value,
             SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>() { { "DiscordId", claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value } } },
-            SuccessUrl = navigationManager.BaseUri,
+            SuccessUrl = navigationManager.ToAbsoluteUri("Success").ToString(),
             CancelUrl = navigationManager.BaseUri,
             AutomaticTax = new Stripe.Checkout.SessionAutomaticTaxOptions() { Enabled = true },
         });
