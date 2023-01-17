@@ -5,9 +5,9 @@ namespace StableDiffusionDiscordBot.Pages
 {
     public class SuccessModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            Redirect("/");
+            return Redirect("/");
         }
     }
 }
