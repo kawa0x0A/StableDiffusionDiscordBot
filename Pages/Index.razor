@@ -196,6 +196,10 @@
     [CascadingParameter]
     private Task<AuthenticationState>? AuthenticationState { get; set; }
 
+    [SupplyParameterFromQuery]
+    [Parameter]
+    public bool Success { get; set; } = false;
+
     private enum Language
     {
         English,
@@ -244,40 +248,45 @@
         base.OnInitialized();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
+        var authenticationState = await AuthenticationState!;
+
+        if ((authenticationState.User.Identity != null) && (authenticationState.User.Identity.IsAuthenticated))
         {
-            var authenticationState = await AuthenticationState!;
+            var subscriptionService = new Stripe.SubscriptionService();
 
-            if ((authenticationState.User.Identity != null) && (authenticationState.User.Identity.IsAuthenticated))
-            {
-                var subscriptionService = new Stripe.SubscriptionService();
+            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.FindFirstValue(ClaimTypes.NameIdentifier)}' AND status:'active'" });
 
-                var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.FindFirstValue(ClaimTypes.NameIdentifier)}' AND status:'active'" });
-
-                if (subscriptions.Data.Count == 0)
-                {
-                    CurrentSubscriptionState = SubscriptionState.Disable;
-                }
-                else if (subscriptions.Data.Count > 1)
-                {
-                    CurrentSubscriptionState = SubscriptionState.Duplication;
-                }
-                else
-                {
-                    CurrentSubscriptionState = SubscriptionState.Enable;
-                }
-            }
-            else
+            if (subscriptions.Data.Count == 0)
             {
                 CurrentSubscriptionState = SubscriptionState.Disable;
             }
-
-            StateHasChanged();
+            else if (subscriptions.Data.Count > 1)
+            {
+                CurrentSubscriptionState = SubscriptionState.Duplication;
+            }
+            else
+            {
+                CurrentSubscriptionState = SubscriptionState.Enable;
+            }
+        }
+        else
+        {
+            CurrentSubscriptionState = SubscriptionState.Disable;
         }
 
-        await base.OnAfterRenderAsync(firstRender);
+        await base.OnInitializedAsync();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Success)
+        {
+            navigationManager.NavigateTo("/", true);
+        }
+
+        base.OnParametersSet();
     }
 
     private string GetDiscordBotUrl()
@@ -339,7 +348,7 @@
             Mode = "subscription",
             CustomerEmail = claims.Single(c => c.Type == ClaimTypes.Email).Value,
             SubscriptionData = new Stripe.Checkout.SessionSubscriptionDataOptions() { Metadata = new Dictionary<string, string>() { { "DiscordId", claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value } } },
-            SuccessUrl = navigationManager.ToAbsoluteUri("Success").ToString(),
+            SuccessUrl = navigationManager.BaseUri + "?Success=true",
             CancelUrl = navigationManager.BaseUri,
             AutomaticTax = new Stripe.Checkout.SessionAutomaticTaxOptions() { Enabled = true },
         });
