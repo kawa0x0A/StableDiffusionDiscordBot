@@ -279,14 +279,16 @@
         await base.OnInitializedAsync();
     }
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
         if (Success)
         {
+            await Task.Delay(TimeSpan.FromSeconds(3));
+
             navigationManager.NavigateTo("/", true);
         }
 
-        base.OnParametersSet();
+        await base.OnParametersSetAsync();
     }
 
     private string GetDiscordBotUrl()
