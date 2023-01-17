@@ -244,35 +244,40 @@
         base.OnInitialized();
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var authenticationState = await AuthenticationState!;
-
-        if ((authenticationState.User.Identity != null) && (authenticationState.User.Identity.IsAuthenticated))
+        if (firstRender)
         {
-            var subscriptionService = new Stripe.SubscriptionService();
+            var authenticationState = await AuthenticationState!;
 
-            var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.FindFirstValue(ClaimTypes.NameIdentifier)}' AND status:'active'" });
+            if ((authenticationState.User.Identity != null) && (authenticationState.User.Identity.IsAuthenticated))
+            {
+                var subscriptionService = new Stripe.SubscriptionService();
 
-            if (subscriptions.Data.Count == 0)
-            {
-                CurrentSubscriptionState = SubscriptionState.Disable;
-            }
-            else if (subscriptions.Data.Count > 1)
-            {
-                CurrentSubscriptionState = SubscriptionState.Duplication;
+                var subscriptions = await subscriptionService.SearchAsync(new Stripe.SubscriptionSearchOptions() { Query = $"metadata['DiscordId']:'{authenticationState.User.FindFirstValue(ClaimTypes.NameIdentifier)}' AND status:'active'" });
+
+                if (subscriptions.Data.Count == 0)
+                {
+                    CurrentSubscriptionState = SubscriptionState.Disable;
+                }
+                else if (subscriptions.Data.Count > 1)
+                {
+                    CurrentSubscriptionState = SubscriptionState.Duplication;
+                }
+                else
+                {
+                    CurrentSubscriptionState = SubscriptionState.Enable;
+                }
             }
             else
             {
-                CurrentSubscriptionState = SubscriptionState.Enable;
+                CurrentSubscriptionState = SubscriptionState.Disable;
             }
-        }
-        else
-        {
-            CurrentSubscriptionState = SubscriptionState.Disable;
+
+            StateHasChanged();
         }
 
-        await base.OnInitializedAsync();
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private string GetDiscordBotUrl()
